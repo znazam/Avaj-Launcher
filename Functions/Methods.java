@@ -1,23 +1,58 @@
 package functions;
 
-import java.util.Scanner;
+import java.util.*;
 import java.io.*;
 
 public class Methods{//scans the data in a file and returns it
-	public static String Sc(File file){
+	public static void Sc(File file){
 		try{
-			Scanner sc = new Scanner(file);
-			String data = sc.nextLine() + "\n";
-			while(sc.hasNextLine()){
-				data = data + sc.nextLine();
+			// Scanner presc = new Scanner(file);
+			// Scanner sc = new Scanner(file);
+			// int i = 0;
+			// int j = 0;
+			// int c= 0;
+			// String cp = "start";
+			// while(presc.hasNextLine()){
+			// 	//data = data + sc.nextLine() + "\n";
+			// 	cp = presc.nextLine();
+			// 	c++;
+			// }
+			// System.out.println(cp);
+			// String[][] data = new String[c][5];
+			// while (sc.hasNextLine()){
+			// 	while (sc.hasNext(" ")){
+			// 		data[i][j] = sc.next(" ");
+			// 		j++;
+			// 		System.out.println(data[i][j]);
+			// 	}
+			// 	i++;
+			// }
+			// presc.close();
+			// sc.close();
+			String token1 = "";
+			Scanner inFile1 = new Scanner(new File("scenario.txt")).useDelimiter(",\\s*");
+			String[] tempsArray = {""};
+			int i = 0;
+			List<String> temps = new ArrayList<String>();
+					while (inFile1.hasNext()) {
+			  token1 = inFile1.next();
+			  temps.add(token1);
+			  tempsArray[i++] = temps; 
 			}
-			sc.close();
-			return data;
+			inFile1.close();
+		
+			// String[] tempsArray = temps.toArray(new String[0]);
+		
+			// for (String s : tempsArray) {
+			//   System.out.println(s);
+			// }
+			System.out.println(tempsArray[0]);
+			// return data;
 		}
 		catch (FileNotFoundException e){
 			System.out.println("file not found bru");
 		}
-		return null;
+		// return null;
 	}
 
 
