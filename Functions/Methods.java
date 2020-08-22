@@ -1,5 +1,4 @@
 package functions;
-
 import java.util.*;
 import java.io.*;
 
@@ -31,20 +30,22 @@ public class Methods{//scans the data in a file and returns it
 			// sc.close();
 			Scanner file = new Scanner(new File("scenario.txt")).useDelimiter(",\\s*");
 			String line = file.nextLine();
-			//String line;
-			//String[] tempsArray = {""};
-			// int i = 0;
-			// int j = 0;
 			//String [] data = {""};
-			Var.numSim = Integer.parseInt(line);
-			System.out.println(Var.numSim);
-			// List<String> temps = new ArrayList<String>();
-			// 		while (file.hasNext()) {
-			//   line = file.next();
-			//   data = line.split(" ");
-			//   temps.add(line);
-			//   //tempsArray[i++] = temps; 
-			// }
+			try{
+				Var.numSim = Integer.parseInt(line);
+			}
+			catch(Exception e){
+				Var.numSim = 1;
+				System.out.println("parsing caused an error so simulation will only run one time");
+			}
+
+			List<String> temps = new ArrayList<String>();
+					while (file.hasNext()) {
+			  line = file.next();
+			  data = line.split(" ");
+			  temps.add(line);
+			  //tempsArray[i++] = temps; 
+			}
 
 			file.close();
 			
@@ -64,16 +65,11 @@ public class Methods{//scans the data in a file and returns it
 	}
 
 
-	public static void SimTxt() {//creates simulation file and writes data in
+	public static void SimTxt(String txt) {//creates simulation file and writes data in
 		try {
-		File sim = new File("simulation.txt");
+		//File sim = new File("simulation.txt");
 		FileWriter mes = new FileWriter("simulation.txt");
-		if (sim.createNewFile()) {
-			System.out.println("File created: " + sim.getName());
-		} else {
-			System.out.println("File already exists.");
-		}
-		mes.write("Files in Java might be tricky, but it is fun enough!\n");
+		mes.write(txt);
 		mes.close();
 		System.out.println("Successfully wrote to the file.");
 		} catch (IOException e) {

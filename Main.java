@@ -21,6 +21,8 @@ public class Main{
 			func.SimTxt();
 			//String wea = wp.getCurrentWeather();
 			//System.out.println(wea);
+			func.SimTxt().mes.close();
+			Methods.SimTxt().mes.close();
 		}
 		else {
 			System.out.println("Check that you have 1 argument, no more or no less");
