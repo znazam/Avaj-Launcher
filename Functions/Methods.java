@@ -4,7 +4,7 @@ import java.util.*;
 import java.io.*;
 
 public class Methods{//scans the data in a file and returns it
-	public static void Sc(File file){
+	public static void Sc(){
 		try{
 			// Scanner presc = new Scanner(file);
 			// Scanner sc = new Scanner(file);
@@ -29,24 +29,32 @@ public class Methods{//scans the data in a file and returns it
 			// }
 			// presc.close();
 			// sc.close();
-			String token1 = "";
-			Scanner inFile1 = new Scanner(new File("scenario.txt")).useDelimiter(",\\s*");
-			String[] tempsArray = {""};
-			int i = 0;
-			List<String> temps = new ArrayList<String>();
-					while (inFile1.hasNext()) {
-			  token1 = inFile1.next();
-			  temps.add(token1);
-			  tempsArray[i++] = temps; 
-			}
-			inFile1.close();
-		
-			// String[] tempsArray = temps.toArray(new String[0]);
-		
+			Scanner file = new Scanner(new File("scenario.txt")).useDelimiter(",\\s*");
+			String line = file.nextLine();
+			//String line;
+			//String[] tempsArray = {""};
+			// int i = 0;
+			// int j = 0;
+			//String [] data = {""};
+			Var.numSim = Integer.parseInt(line);
+			System.out.println(Var.numSim);
+			// List<String> temps = new ArrayList<String>();
+			// 		while (file.hasNext()) {
+			//   line = file.next();
+			//   data = line.split(" ");
+			//   temps.add(line);
+			//   //tempsArray[i++] = temps; 
+			// }
+
+			file.close();
+			
+//			String[] tempsArray = temps.toArray(new String[0]);
+			
 			// for (String s : tempsArray) {
 			//   System.out.println(s);
 			// }
-			System.out.println(tempsArray[0]);
+//			System.out.println(tempsArray[0]);
+//			System.out.println(data);
 			// return data;
 		}
 		catch (FileNotFoundException e){

@@ -16,7 +16,7 @@ public class Main{
 			//WeatherProvider wp = new WeatherProvider(); 
 			File file = new File(args[0]);
 			//String[][] data = 
-			func.Sc(file);
+			func.Sc();
 			//System.out.println(data[++i][++j]);
 			func.SimTxt();
 			//String wea = wp.getCurrentWeather();
