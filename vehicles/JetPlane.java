@@ -19,6 +19,7 @@ public class JetPlane extends Aircraft implements Flyable {
 
     @Override
     public void updateConditions() {
+        System.out.println("called jetplane update conditions");
         try {
             String weather = weatherTower.getWeather(this.coordinates);
             switch (weather) {
@@ -27,23 +28,29 @@ public class JetPlane extends Aircraft implements Flyable {
                     if ((this.coordinates.height += 2) > 100){
                         this.coordinates.height = 100;
                     }
-                    Methods.SimTxt("JetPlane " + name + " Clear Skies Ahead.hold onto your seatbelts.\n");
+                    // Methods.SimTxt("JetPlane "+name+" Clear Skies Ahead.hold onto your seatbelts.\n");
+                    Var.log.add("JetPlane "+name+" Clear Skies Ahead.hold onto your seatbelts.\n");
                     break;
                 case "RAIN":
                     this.coordinates.latitude += 5;
-                    Methods.SimTxt("JetPlane " + name + " get your umbrella out, we have leaks\n");
+                    // Methods.SimTxt("JetPlane "+name+" get your umbrella out, we have leaks\n");
+                    Var.log.add("JetPlane "+name+" get your umbrella out, we have leaks\n");
                     break;
                 case "FOG":
                     this.coordinates.latitude += 1;
-                    Methods.SimTxt("JetPlane " + name + " Fog, watch out for jumping cows and sheep.!\n");
+                    // Methods.SimTxt("JetPlane "+name+" Fog, watch out for jumping cows and sheep.!\n");
+                    Var.log.add("JetPlane "+name+" Fog, watch out for jumping cows and sheep.!\n");
                     break;
                 case "SNOW":
                     this.coordinates.height -= 7;
-                    Methods.SimTxt("JetPlane " + name + " Snow, up for a slide down a mountain.\n");
+                    // Methods.SimTxt("JetPlane "+name+" Snow, up for a slide down a mountain.\n");
+                    Var.log.add("JetPlane "+name+" Snow, up for a slide down a mountain.\n");
                     if (this.coordinates.height < 1){
                         this.coordinates.height = 0;
-                        Methods.SimTxt("JetPlane " + name + " Landing.\n");
-                        Methods.SimTxt("JetPlane " + name + " landed and unregistered");
+                        // Methods.SimTxt("JetPlane "+name+" Landing.\n");
+                        Var.log.add("JetPlane "+name+" Landing.\n");
+                        // Methods.SimTxt("JetPlane "+name+" landed and unregistered\n");
+                        Var.log.add("JetPlane "+name+" landed and unregistered\n");
                         Var.unregister = this;
                         break;
                     }

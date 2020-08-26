@@ -1,7 +1,7 @@
 package functions;
 import java.util.*;
 
-import classes.WeatherTower;
+import classes.*;
 
 import java.io.*;
 import interfaces.*;
@@ -43,13 +43,13 @@ public class Methods{//scans the data in a file and returns it
 				Var.numSim = 1;
 				System.out.println("parsing caused an error so simulation will only run one time");
 			}
-			Flyable flyable;
-			List<String> temps = new ArrayList<String>();
-			String[] data = new String[0];
+			//List<String> temps = new ArrayList<String>();
 			WeatherTower wt = new WeatherTower();
 			while (file.hasNext()) {
+				String[] data = new String[0];
+				Flyable flyable;
 				try{
-					line = file.next();
+					line = file.nextLine();
 					data = line.split(" ");
 					flyable = AircraftFactory.newAircraft(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]), Integer.parseInt(data[4]));
 					wt.register(flyable);
@@ -73,17 +73,20 @@ public class Methods{//scans the data in a file and returns it
 			// return data;
 		}
 		catch (FileNotFoundException e){
-			System.out.println("file not found bru");
+			System.out.println("Something is wrong in sc");
 		}
 		// return null;
 	}
 
 
-	public static void SimTxt(String txt) {//creates simulation file and writes data in
+	public static void SimTxt() {//creates simulation file and writes data in
 		try {
 		//File sim = new File("simulation.txt");
 		FileWriter mes = new FileWriter("simulation.txt");
-		mes.write(txt);
+		System.out.println(Var.log);
+		for (String log : Var.log){
+			mes.write(log);
+		}
 		mes.close();
 		System.out.println("Successfully wrote to the file.");
 		} catch (IOException e) {
@@ -110,4 +113,14 @@ public class Methods{//scans the data in a file and returns it
     //     return anotherArray; 
     // } 
 
+	public static void iterateSimulation(){
+		for (int i = 0; i < Var.numSim; i++){
+			try {
+				WeatherTower wt = new WeatherTower();
+				wt.conditionsChanged();
+			} catch (Exception e) {
+				System.out.println("simulation isn't iterating");
+			}
+		}
+	}
 }

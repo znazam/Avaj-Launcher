@@ -1,8 +1,8 @@
-import java.io.*;
+//import java.io.*;
 //import java.util.Scanner;
 import functions.*;
 //import singleton.WeatherProvider;
-import classes.*;
+//import classes.*;
 
 public class Main{
 	public static void main(String[] args){
@@ -11,9 +11,11 @@ public class Main{
 			// i = 0;
 			// j = 0;
 			//WeatherProvider wp = new WeatherProvider(); 
-			File file = new File(args[0]);
+			//File file = new File(args[0]);
 			//String[][] data = 
 			Methods.Sc();
+			Methods.iterateSimulation();
+			Methods.SimTxt();
 			//System.out.println(data[++i][++j]);
 			//Methods.SimTxt();
 			//String wea = wp.getCurrentWeather();

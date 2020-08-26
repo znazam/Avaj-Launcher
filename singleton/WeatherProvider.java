@@ -4,12 +4,14 @@ import java.util.*;
 import classes.Coordinates;
 
 public class WeatherProvider {
+
     public static WeatherProvider weatherProvider = null;
-    String[] weather = {"Sun","Rain", "Fog", "Snow"};
+    private static String[] weather = {"SUN","RAIN", "FOG", "SNOW"};
 
     private WeatherProvider(){}
 
     public static WeatherProvider getProvider(){
+        System.out.println("called weather provider constructor");
         if (weatherProvider == null)
         {
             weatherProvider = new WeatherProvider();
@@ -18,6 +20,7 @@ public class WeatherProvider {
     }
 
     public String getCurrentWeather(Coordinates coordinates){
+        System.out.println("called get current weather");
         Random random = new Random();
         // String wea;
         // String h = this.coordinates.Height;
