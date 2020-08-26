@@ -1,9 +1,9 @@
 package classes;
 
 public class Coordinates{
-    private int longitude;
-    private int latitude;
-    private int height;
+    public int longitude;
+    public int latitude;
+    public int height;
 
     public Coordinates(int longitude, int latitude, int height){
         this.longitude = longitude;
@@ -11,15 +11,15 @@ public class Coordinates{
         this.height = height;
     }
 
-    public getLongitude(){
+    public int getLongitude(){
         return this.longitude;
     }
 
-    public getLatitude(){
+    public int getLatitude(){
         return this.latitude;
     }
 
-    public getHeight(){
+    public int getHeight(){
         return this.height;
     }
 }

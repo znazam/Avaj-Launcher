@@ -37,7 +37,7 @@ public class WeatherProvider {
         //     return wea;
         // }
         //if (h >= 76 && h <= 100){
-        return weather[random.nextInt(0)];
+        return weather[random.nextInt(4)];
         //}
     }   
 }

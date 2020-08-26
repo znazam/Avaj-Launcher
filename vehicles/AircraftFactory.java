@@ -10,7 +10,6 @@ public abstract class AircraftFactory {
         try{
             Flyable flyable;
             Coordinates coordinates = new Coordinates(longitude, latitude, height);
-            Methods func = new Methods();
             switch(type){
                 case "Baloon":
                 flyable = new Baloon(name, coordinates);
@@ -24,7 +23,7 @@ public abstract class AircraftFactory {
                 default:
                 throw new IllegalStateException("Type not recognized " + type);
             }
-            func.SimTxt(type + " " + name);
+            Methods.SimTxt(type + " " + name);
             return flyable;
         }
         catch(Exception e){

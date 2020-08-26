@@ -1,6 +1,11 @@
 package functions;
 import java.util.*;
+
+import classes.WeatherTower;
+
 import java.io.*;
+import interfaces.*;
+import vehicles.*;
 
 public class Methods{//scans the data in a file and returns it
 	public static void Sc(){
@@ -38,13 +43,22 @@ public class Methods{//scans the data in a file and returns it
 				Var.numSim = 1;
 				System.out.println("parsing caused an error so simulation will only run one time");
 			}
-
+			Flyable flyable;
 			List<String> temps = new ArrayList<String>();
-					while (file.hasNext()) {
-			  line = file.next();
-			  data = line.split(" ");
-			  temps.add(line);
-			  //tempsArray[i++] = temps; 
+			String[] data = new String[0];
+			WeatherTower wt = new WeatherTower();
+			while (file.hasNext()) {
+				try{
+					line = file.next();
+					data = line.split(" ");
+					flyable = AircraftFactory.newAircraft(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]), Integer.parseInt(data[4]));
+					wt.register(flyable);
+				}
+				catch (Exception e){
+					System.out.println("couldn't add " + data[1] + " aircraft in method.sc");
+				}
+				//temps.add(line);
+				//tempsArray[i++] = temps; 
 			}
 
 			file.close();
@@ -77,4 +91,23 @@ public class Methods{//scans the data in a file and returns it
 		}
 	}
 	  
+	// public static int[] AirLand(int[] arr, int index){ 
+    //     if (arr == null
+    //         || index < 0
+    //         || index >= arr.length) { 
+  
+    //         return arr; 
+	// 	}
+		
+    //     int[] anotherArray = new int[arr.length - 1]; 
+    //     for (int i = 0, k = 0; i < arr.length; i++) { 
+    //         if (i == index) { 
+    //             continue; 
+    //         } 
+    //         anotherArray[k++] = arr[i]; 
+    //     } 
+  
+    //     return anotherArray; 
+    // } 
+
 }

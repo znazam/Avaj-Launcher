@@ -2,11 +2,12 @@ package vehicles;
 
 import classes.*;
 import interfaces.*;
+import functions.*;
 
 public class Helicopter extends Aircraft implements Flyable{
     
     private WeatherTower weatherTower;
-
+    
     public Helicopter(String name, Coordinates coordinates){
         super(name, coordinates);
     }
@@ -25,30 +26,30 @@ public class Helicopter extends Aircraft implements Flyable{
                     if ((this.coordinates.height += 2) > 100){
                         this.coordinates.height = 100;
                     }
-                    Utils.conditionChangesToLog((Flyable) this, "Helicopter", "Clear Skies Ahead. Time for fast in the other direction.\n");
+                    Methods.SimTxt("Helicopter " + name + " Sunny day, sit back and enjoy the ride\n");
                     break;
                 case "RAIN":
                     this.coordinates.longitude += 5;
-                    Utils.conditionChangesToLog((Flyable) this, "Helicopter", "Look at all this rain! To the diagonal slightly less fast!\n");
+                    Methods.SimTxt("Helicopter " + name + " Damn rain, I hope no ones hair runs home\n");
                     break;
                 case "FOG":
                     this.coordinates.longitude += 1;
-                    Utils.conditionChangesToLog((Flyable) this, "Helicopter", "Fog is bad timez... no fast.!\n");
+                    Methods.SimTxt("Helicopter " + name + " Lets hope we dont fly into a bird\n");
                     break;
                 case "SNOW":
                     this.coordinates.height -= 12;
-                    Utils.conditionChangesToLog((Flyable) this, "Helicopter", "oh dear... Snow = fast down.\n");
+                    Methods.SimTxt("Helicopter " + name + " damn its cold, anyone wanna take the controls while i have a cup of coffee\n");
                     if (this.coordinates.height < 1){
                         this.coordinates.height = 0;
-                        Utils.conditionChangesToLog(this, "Helicopter", "Landing.\n");
-                        Utils.flyableFromLog(this, "Helicopter");
-                        Globals.aircraftLanded = this;
+                        Methods.SimTxt("Helicopter " + name + " is Landing.\n");
+                        Methods.SimTxt("Helicopter " + name + " is landed and unregistered from Tower");
+                        Var.unregister = this;
                         break;
                     }
                     break;
             }
         } catch(Exception e){
-            System.out.printf("Helicopter.updateConditions failed --->%s\n", e.toString());
+            System.out.printf("Helicopter update conditions failed");
         }
     }
 }
