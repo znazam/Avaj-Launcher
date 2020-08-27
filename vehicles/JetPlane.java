@@ -19,7 +19,6 @@ public class JetPlane extends Aircraft implements Flyable {
 
     @Override
     public void updateConditions() {
-        System.out.println("called jetplane update conditions");
         try {
             String weather = weatherTower.getWeather(this.coordinates);
             switch (weather) {
@@ -28,29 +27,23 @@ public class JetPlane extends Aircraft implements Flyable {
                     if ((this.coordinates.height += 2) > 100){
                         this.coordinates.height = 100;
                     }
-                    // Methods.SimTxt("JetPlane "+name+" Clear Skies Ahead.hold onto your seatbelts.\n");
-                    Var.log.add("JetPlane "+name+" Clear Skies Ahead.hold onto your seatbelts.\n");
+                    Var.log.add("JetPlane#"+name+"("+this.id+")"+" Clear Skies Ahead.hold onto your seatbelts.\n");
                     break;
                 case "RAIN":
                     this.coordinates.latitude += 5;
-                    // Methods.SimTxt("JetPlane "+name+" get your umbrella out, we have leaks\n");
-                    Var.log.add("JetPlane "+name+" get your umbrella out, we have leaks\n");
+                    Var.log.add("JetPlane#"+name+"("+this.id+")"+" get your umbrella out, we have leaks\n");
                     break;
                 case "FOG":
                     this.coordinates.latitude += 1;
-                    // Methods.SimTxt("JetPlane "+name+" Fog, watch out for jumping cows and sheep.!\n");
-                    Var.log.add("JetPlane "+name+" Fog, watch out for jumping cows and sheep.!\n");
+                    Var.log.add("JetPlane#"+name+"("+this.id+")"+" Fog, watch out for jumping cows and sheep.!\n");
                     break;
                 case "SNOW":
                     this.coordinates.height -= 7;
-                    // Methods.SimTxt("JetPlane "+name+" Snow, up for a slide down a mountain.\n");
-                    Var.log.add("JetPlane "+name+" Snow, up for a slide down a mountain.\n");
+                    Var.log.add("JetPlane#"+name+"("+this.id+")"+" Snow, anyone up for a slide down a mountain.\n");
                     if (this.coordinates.height < 1){
                         this.coordinates.height = 0;
-                        // Methods.SimTxt("JetPlane "+name+" Landing.\n");
-                        Var.log.add("JetPlane "+name+" Landing.\n");
-                        // Methods.SimTxt("JetPlane "+name+" landed and unregistered\n");
-                        Var.log.add("JetPlane "+name+" landed and unregistered\n");
+                        Var.log.add("Tower says: JetPlane#"+name+"("+this.id+")"+" Landing.\n");
+                        Var.log.add("Tower says: JetPlane#"+name+"("+this.id+")"+" landed and unregistered\n");
                         Var.unregister = this;
                         break;
                     }

@@ -2,12 +2,10 @@ package vehicles;
 
 import classes.Coordinates;
 import interfaces.*;
-import functions.*;
 
 public abstract class AircraftFactory {
 
     public static Flyable newAircraft(String type, String name, int longitude, int latitude, int height){
-        System.out.println("called new aircraft");
         try{
             Flyable flyable;
             Coordinates coordinates = new Coordinates(longitude, latitude, height);
@@ -24,8 +22,6 @@ public abstract class AircraftFactory {
                 default:
                     throw new IllegalStateException("Type not recognized " + type);
             }
-            //Methods.SimTxt(type + " " + name);
-            Var.log.add(type+" "+name);
             return flyable;
         }
         catch(Exception e){

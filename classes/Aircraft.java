@@ -1,5 +1,7 @@
 package classes;
 
+import functions.*;
+
 public abstract class Aircraft{
     protected long id;
     protected String name;
@@ -7,10 +9,9 @@ public abstract class Aircraft{
     private static long idCounter;
 
     public Aircraft(String name, Coordinates coordinates){
-        System.out.println("called aircraft contructor");
         this.name = name;
         this.coordinates = coordinates;
-        this.id = nextId();
+        Var.ID = this.id = nextId();
     }
 
     private long nextId(){
